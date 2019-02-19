@@ -1,8 +1,55 @@
 <template>
-  <div>
-    <nuxt />
-  </div>
+  <v-app id="inspire">
+    <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      app
+    >
+      <v-list dense>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>home</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Home</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-title>Login</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-title>Logout</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar
+      color="#ee827c"
+      dark
+      fixed
+      app
+    >
+      <v-toolbar-side-icon @click.stop="drawer = !drawer" />
+      <v-toolbar-title>Scket</v-toolbar-title>
+    </v-toolbar>
+    <Nuxt/>
+    <v-footer
+      color="#ee827c"
+      app
+    />
+  </v-app>
 </template>
+
+<script>
+  export default {
+    data: () => ({
+      drawer: null
+    })
+  }
+</script>
 
 <style>
 html {

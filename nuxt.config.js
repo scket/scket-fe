@@ -27,23 +27,20 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [
-    'element-ui/lib/theme-chalk/index.css'
-  ],
+  css: [],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-    '@/plugins/element-ui'
-  ],
+  plugins: [],
 
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/vuetify'
   ],
   /*
   ** Axios module configuration
@@ -56,8 +53,6 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    transpile: [/^element-ui/],
-
     /*
     ** You can extend webpack config here
     */

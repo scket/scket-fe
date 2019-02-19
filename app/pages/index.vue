@@ -1,24 +1,14 @@
 <template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        scket-fe
-      </h1>
-      <h2 class="subtitle">
-        scket frontend
-      </h2>
-    </div>
-  </section>
+  <div>
+    <v-container style="height: 1000px;">
+      これはscket-feです
+    </v-container>
+  </div>
 </template>
 
 <script>
-import Logo from '@/components/atoms/Logo'
-
 export default {
-  components: {
-    Logo
-  }
+
 }
 </script>
 
