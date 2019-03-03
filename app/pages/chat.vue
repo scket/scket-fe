@@ -2,7 +2,7 @@
   <v-container>
     <v-layout column>
       <v-flex>
-        <v-card class="message_wrap">
+        <v-card class="message_wrap wrapper">
           <div class="messages">
             <message />
           </div>
@@ -29,9 +29,6 @@
 
 <style scoped>
   .message_wrap {
-    padding: 24px 24px 5px;
-    max-width: 700px;
-    margin: 15px auto;
     text-align: right;
     font-size: 14px;
     background: #ffffff;
