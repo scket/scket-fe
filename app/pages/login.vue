@@ -1,31 +1,12 @@
 <template>
-  <v-container
-    fluid
-    fill-height
-  >
-    <v-layout
-      align-center
-      justify-center
-    >
-      <v-flex
-        xs12
-        sm8
-        md4
-      >
+  <v-container fluid fill-height>
+    <v-layout align-center justify-center>
+      <v-flex xs12 sm8 md4>
         <v-card class="elevation-12">
           <v-card-text>
             <v-form>
-              <v-text-field
-                prepend-icon="person"
-                label="メールアドレス"
-                type="text"
-              />
-              <v-text-field
-                id="password"
-                prepend-icon="lock"
-                label="パスワード"
-                type="password"
-              />
+              <v-text-field prepend-icon="person" label="メールアドレス" type="text"/>
+              <v-text-field id="password" prepend-icon="lock" label="パスワード" type="password"/>
             </v-form>
           </v-card-text>
           <v-card-actions>
@@ -34,7 +15,7 @@
               ログイン
             </v-btn>
           </v-card-actions>
-          <v-divider light />
+          <v-divider light/>
           <div class="register_form">
             <v-card-text>
               アカウントをお持ちでない方はこちら
@@ -54,8 +35,6 @@
 <script>
   export default {
     name: 'Login',
-
-    layout: 'login_register'
   }
 </script>
 
