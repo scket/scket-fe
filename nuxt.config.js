@@ -29,6 +29,10 @@ module.exports = {
   */
   css: [],
 
+  router: {
+    middleware: []
+  },
+
   /*
   ** Plugins to load before mounting the App
   */

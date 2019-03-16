@@ -1,38 +1,47 @@
 /*
-  user: {
-    name:
-    homeAddress:
-    mailAddress:
-  }
- */
+ authUser: {
+   name:
+   homeAddress:
+   email:
+   password:
+ }
+*/
 
 export const state = () => ({
-  isLoggedIn: false,
-  user: {
-    name: 'hogehoge',
-    homeAddress: 'aaa県bbb市',
-    mailAddress: 'fugafuga@aaa.co.jp'
-  }
+  authUser: {},
+  isLoggedIn: false
 });
 
 export const getters = {
-  getUser: (state) => state.user,
-  getIsLoggedIn: (state) => state.isLoggedIn
+  authUser: (state) => state.authUser,
+  isLoggedIn: (state) => state.isLoggedIn
 };
 
 export const mutations = {
-  setUser (state, {user}) {
-    state.user = user;
-    state.isLoggedIn = true;
+  setUser (state, user) {
+    state.authUser = user;
+    state.isLoggedIn = !!user || false;
   }
 };
 
 export const actions = {
-  login ({commit}, {user}) {
-    commit('setUser', {user});
+  async login ({commit}, user) {
+    const {email, password} = user;
+    if (email === 'aaa' && password === 'aaa') {
+      // TODO: APIを叩いて認証情報を取得する(ユーザー名や住所などの情報もレスポンスで受け取る)
+      // 一旦仮のユーザーを作成
+      Object.assign(user, {name: 'aaa', homeAddress: '埼玉県川越市'})
+      commit('setUser', user);
+    } else {
+      throw new Error('Invalid User');
+    }
+  },
+
+  logout ({commit}) {
+    commit('setUser', null);
   },
 
   register ({commit}, {user}) {
-    commit('setUser', {user});
+    commit('setUser', user);
   }
 };

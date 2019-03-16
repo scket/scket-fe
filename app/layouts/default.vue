@@ -2,25 +2,27 @@
   <v-app id="inspire">
     <v-toolbar color="#ee827c" dark fixed app>
       <v-toolbar-title>Scket</v-toolbar-title>
-      <v-spacer/>
+      <v-spacer />
       <v-btn outline>
-        <v-icon small style="padding-right: 2px">home</v-icon>
+        <v-icon small style="padding-right: 2px">
+          home
+        </v-icon>
         MyPage
       </v-btn>
     </v-toolbar>
     <v-content>
       <Nuxt />
     </v-content>
-    <v-footer color="#ee827c" app/>
+    <v-footer color="#ee827c" app />
   </v-app>
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      drawer: null
-    })
-  }
+export default {
+  data: () => ({
+    drawer: null
+  })
+}
 </script>
 
 <style>

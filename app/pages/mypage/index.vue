@@ -3,9 +3,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'index'
-  }
+export default {
+  middleware: 'auth'
+}
 </script>
 
 <style scoped>

@@ -5,7 +5,8 @@
         v-model="message"
         solo
         clearable
-        placeholder="ここはテキストフォームです"/>
+        placeholder="ここはテキストフォームです"
+      />
     </v-flex>
     <v-flex xs4 sm2>
       <v-btn>送信</v-btn>
@@ -14,15 +15,13 @@
 </template>
 
 <script>
-  export default {
-    name: 'InputForm',
-
-    data () {
-      return {
-        message: ''
-      }
+export default {
+  data () {
+    return {
+      message: ''
     }
   }
+}
 </script>
 
 <style scoped>

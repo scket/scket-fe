@@ -1,21 +1,32 @@
 <template>
-  <v-container fluid fill-height>
-    <v-layout align-center justify-center>
-      <v-flex xs12 sm8 md4>
-        <v-card class="elevation-12">
+  <v-container>
+    <v-layout columr>
+      <v-flex>
+        <v-card class="wrapper">
           <v-card-text>
             <v-form>
-              <v-text-field prepend-icon="person" label="メールアドレス" type="text"/>
-              <v-text-field id="password" prepend-icon="lock" label="パスワード" type="password"/>
+              <v-text-field
+                v-model="formData.email"
+                prepend-icon="person"
+                label="メールアドレス"
+                type="text"
+              />
+              <v-text-field
+                id="password"
+                v-model="formData.password"
+                prepend-icon="lock"
+                label="パスワード"
+                type="password"
+              />
             </v-form>
           </v-card-text>
           <v-card-actions>
             <v-spacer />
-            <v-btn color="primary">
+            <v-btn color="primary" @click="handleLogin">
               ログイン
             </v-btn>
           </v-card-actions>
-          <v-divider light/>
+          <v-divider light />
           <div class="register_form">
             <v-card-text>
               アカウントをお持ちでない方はこちら
@@ -33,9 +44,35 @@
 </template>
 
 <script>
-  export default {
-    name: 'Login',
+import {mapActions} from 'vuex';
+
+export default {
+  name: 'Login',
+
+  data () {
+    return {
+      formData: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+
+  methods: {
+    async handleLogin () {
+      try {
+        await this.login({...this.formData});
+        this.$router.push('/');
+      } catch (e) {
+        console.log(e.message);
+      }
+    },
+
+    ...mapActions({
+      login: 'user/login'
+    })
   }
+}
 </script>
 
 <style scoped>

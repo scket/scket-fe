@@ -19,21 +19,21 @@
 </template>
 
 <script>
-  export default {
-    name: 'Message',
+export default {
+  name: 'Message',
 
-    props: {
-      // data: {
-      //   type: Object,
-      //   required: true
-      // }
+  props: {
+    // data: {
+    //   type: Object,
+    //   required: true
+    // }
 
-      // user: {
-      //   type: String,
-      //   required: true
-      // }
-    }
+    // user: {
+    //   type: String,
+    //   required: true
+    // }
   }
+}
 </script>
 
 <style scoped>
