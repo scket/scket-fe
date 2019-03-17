@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex';
+import {mapActions, mapGetters} from 'vuex';
 
 export default {
   name: 'Login',
@@ -58,11 +58,17 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters({
+      reqPath: 'user/reqPath'
+    })
+  },
+
   methods: {
     async handleLogin () {
       try {
         await this.login({...this.formData});
-        this.$router.push('/');
+        this.$router.push(this.reqPath || '/');
       } catch (e) {
         console.log(e.message);
       }

@@ -6,7 +6,7 @@
           <v-card>
             <v-list two-line>
               <template v-for="(thread, index) in threads">
-                <v-list-tile :key="thread.id" @click="click">
+                <v-list-tile :key="thread.id" @click="click(thread.id)">
                   <v-list-tile-content>
                     <v-list-tile-title>{{ thread.title }}</v-list-tile-title>
                     <v-list-tile-sub-title class="text--primary">
@@ -55,13 +55,13 @@ export default {
 
   computed: {
     ...mapGetters({
-      threads: 'dummyData/getThreads'
+      threads: 'dummyData/threads'
     })
   },
 
   methods: {
-    click () {
-      console.log(this.threads)
+    click (id) {
+      this.$router.push(`/${id}`);
     },
 
     toggle (index) {

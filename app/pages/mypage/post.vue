@@ -69,7 +69,7 @@ export default {
   methods: {
     handlePost () {
       const payload = {
-        id: Math.random(),
+        id: Math.random()*10,
         ...this.formData,
         user: {
           name: this.user.name,

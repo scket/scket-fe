@@ -1,9 +1,11 @@
 <template>
   <v-app id="inspire">
     <v-toolbar color="#ee827c" dark fixed app>
-      <v-toolbar-title>Scket</v-toolbar-title>
+      <v-toolbar-title @click.prevent="clickLogo">
+        Scket
+      </v-toolbar-title>
       <v-spacer />
-      <v-btn outline>
+      <v-btn outline @click="clickHome">
         <v-icon small style="padding-right: 2px">
           home
         </v-icon>
@@ -13,15 +15,54 @@
     <v-content>
       <Nuxt />
     </v-content>
-    <v-footer color="#ee827c" app />
+    <v-footer color="#ee827c" app height="auto">
+      <v-layout
+        justify-center
+        row
+        wrap
+      >
+        <v-btn
+          v-for="link in links"
+          :key="link"
+          color="white"
+          flat
+        >
+          {{ link }}
+        </v-btn>
+        <v-flex
+          py-3
+          text-xs-center
+          white--text
+          xs12
+        >
+          &copy;2019 — <strong>Scket</strong>
+        </v-flex>
+      </v-layout>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
 export default {
   data: () => ({
-    drawer: null
-  })
+    drawer: null,
+    links: [
+      'scketについて',
+      'プライバシー',
+      '利用規約',
+      'お問い合わせ'
+    ]
+  }),
+
+  methods: {
+    clickLogo () {
+      this.$router.push('/')
+    },
+
+    clickHome () {
+      this.$router.push('/mypage')
+    }
+  }
 }
 </script>
 

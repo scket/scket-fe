@@ -1,7 +1,8 @@
 export default function ({store, route, redirect}) {
-  // TODO: ルートへのアクセスはlogin/へ誘導しないようにする
   // TODO: Cookieがなければloginに遷移させる
-  if (!store.state.user.isLoggedIn) {
-    redirect(route.path);
+  const isLoggedIn = store.getters['user/isLoggedIn'];
+  if (!isLoggedIn) {
+    store.commit('user/setReqPath', route.path);
+    return redirect('/login')
   }
 }
