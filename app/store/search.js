@@ -57,7 +57,6 @@ export const actions = {
   },
 
   setKeyword ({commit}, {keyword}) {
-    console.log(keyword)
     commit('setKeyword', keyword)
   }
 }
