@@ -82,3 +82,10 @@ dist
 
 # Service worker
 sw.*
+
+# public
+public
+
+# Firebase cache
+.firebase
+firebase-debug.log

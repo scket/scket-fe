@@ -6,19 +6,24 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
-    "build": "nuxt build",
+    "build": "nuxt build && npm run build:copy",
     "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "test": "jest"
+    "test": "jest",
+    "build:copy": "rm -rf public/* && cp -R functions/nuxt/dist/ public/assets && cp -R app/static/* public",
+    "serve": "firebase serve --only hosting,functions",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1",
+    "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.3.4",
     "express": "^4.16.4",
-    "@nuxtjs/axios": "^5.3.6"
+    "nuxt": "^2.3.4",
+    "nuxt-device-detect": "^1.1.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

@@ -1,40 +1,44 @@
-<template>
+<template xmlns="http://www.w3.org/1999/xhtml">
   <v-app id="inspire">
-    <v-toolbar color="#ee827c" dark fixed app>
-      <v-toolbar-title @click.prevent="clickLogo">
-        Scket
+    <v-toolbar
+      extension-height="60px"
+      color="#fff"
+      dark
+      fixed
+      app
+      extended
+    >
+      <v-toolbar-title>
+        <title-logo-button />
       </v-toolbar-title>
+
       <v-spacer />
-      <v-btn outline @click="clickHome">
-        <v-icon small style="padding-right: 2px">
-          home
-        </v-icon>
-        MyPage
-      </v-btn>
+      <div v-if="!isLoggedIn">
+        <login-button />
+        <register-button />
+      </div>
+      <div v-else>
+        <home-button />
+      </div>
+
+      <template slot="extension">
+        <search-form />
+      </template>
     </v-toolbar>
-    <v-content>
+    <v-content style="background-color: #EEEEEE">
       <Nuxt />
     </v-content>
-    <v-footer color="#ee827c" app height="auto">
-      <v-layout
-        justify-center
-        row
-        wrap
-      >
+    <v-footer color="#fff" app height="auto">
+      <v-layout justify-center row wrap>
         <v-btn
           v-for="link in links"
           :key="link"
-          color="white"
+          color="black"
           flat
         >
           {{ link }}
         </v-btn>
-        <v-flex
-          py-3
-          text-xs-center
-          white--text
-          xs12
-        >
+        <v-flex py-3 text-xs-center black--text xs12>
           &copy;2019 — <strong>Scket</strong>
         </v-flex>
       </v-layout>
@@ -43,9 +47,25 @@
 </template>
 
 <script>
+import '@fortawesome/fontawesome-free/css/all.css'
+import {mapGetters} from 'vuex';
+import TitleLogoButton from '../components/atoms/TitleLogoButton';
+import LoginButton from '../components/atoms/LoginButton';
+import RegisterButton from '../components/atoms/RegisterButton';
+import HomeButton from '../components/atoms/HomeButton';
+import SearchForm from '../components/molecules/SearchForm';
+
 export default {
+  components: {
+    TitleLogoButton,
+    LoginButton,
+    RegisterButton,
+    HomeButton,
+    SearchForm
+  },
+
   data: () => ({
-    drawer: null,
+    size: '60px',
     links: [
       'scketについて',
       'プライバシー',
@@ -54,14 +74,10 @@ export default {
     ]
   }),
 
-  methods: {
-    clickLogo () {
-      this.$router.push('/')
-    },
-
-    clickHome () {
-      this.$router.push('/mypage')
-    }
+  computed: {
+    ...mapGetters({
+      isLoggedIn: 'user/isLoggedIn'
+    })
   }
 }
 </script>

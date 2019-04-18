@@ -3,6 +3,7 @@ const pkg = require('./package')
 module.exports = {
   mode: 'universal',
   srcDir: 'app',
+  buildDir: 'functions/nuxt',
 
   /*
   ** Headers of the page
@@ -44,7 +45,8 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    'nuxt-device-detect'
   ],
   /*
   ** Axios module configuration
@@ -57,6 +59,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    publicPath: '/assets/',
     /*
     ** You can extend webpack config here
     */
